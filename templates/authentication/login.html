@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block content %}
+<div class="register-area" style="height: 80%; display: flex; justify-content: center">
+  <div class="box-for-overflow" style="height: 100%; display: flex; width: 32rem; align-items: center">
+    <div class="col-md-12 col-xs-12 login-blocks">
+      <div id="login_box" style="text-align: center; margin-top: 2%">
+        <h2
+          style="
+            display: inline;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            background: transparent none repeat scroll 0% 0%;
+            border-bottom: 2px solid #a08049;
+            font-size: 21px;
+            line-height: 30px;
+          "
+        >
+          Login
+        </h2>
+      </div>
+      <form action="{% url 'authentication:login'%}" method="post" id="login_form">
+        {% csrf_token %}
+        <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">
+          <input type="text" class="form-control" name="username" id="id_input" placeholder="아이디" style="margin: auto" />
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" name="password" id="password_input" placeholder="비밀번호" style="margin: auto" />
+        </div>
+
+        <div class="text-center" st>
+          <button
+            class="btn btn-primary"
+            type="button"
+            id="submit_btn"
+            style="
+              margin-top: 1%;
+              margin-bottom: 3%;
+              color: #fff;
+              background-color: #c2c2c2;
+              border-color: #c2c2c2;
+              border-radius: 5px;
+              font-weight: 400;
+              margin-top: 2rem;
+              font-size: 19px;
+            "
+            onclick="onSubmit()"
+          >
+            Log in
+          </button>
+        </div>
+        <div style="text-align: center">{% if error %} {{error}} {% endif %}</div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  const onSubmit = () => {
+    document.getElementById("login_form").submit();
+  };
+</script>
+{% endblock content %}
