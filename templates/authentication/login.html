@@ -56,5 +56,16 @@
   const onSubmit = () => {
     document.getElementById("login_form").submit();
   };
+  document.getElementById("login_form").addEventListener(
+    "keydown",
+    function (event) {
+      //엔터키 submit 이벤트 달기
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("login_form").submit();
+      }
+    },
+    true,
+  );
 </script>
 {% endblock content %}
