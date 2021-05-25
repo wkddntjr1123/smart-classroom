@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authentication',
+    'professor',
+    'student',
 ]
 
 MIDDLEWARE = [
@@ -115,16 +117,17 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_URL = '/auth/login'
+LOGIN_URL = '/authentication/login'
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticCollect')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+MEDIA_URL = 'media/' #이 url로 접속하면, 미디어파일의 경로로 들어가도록 한다
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  #이 경로로 미디어 파일 저장
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# 인증에 사용할 커스텀 User 모델 지정 : '앱이름.모델명'
+AUTH_USER_MODEL = 'authentication.User'

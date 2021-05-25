@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block head %}
+<style>
+  .head_title::after {
+    content: "";
+    width: 90%;
+    position: absolute;
+    height: 4px;
+    background: #858585;
+    left: 62px;
+    top: 225px;
+  }
+</style>
+{% endblock head %} {% block content %}
+<div class="head_title" style="font-size: 32px; margin: 5rem 4rem; text-shadow: 1px 1px 1px #084298">> 출석부</div>
+<div class="container">
+  <table class="table table-light table-striped" style="font-size: 21px; text-align: center">
+    <thead style="font-weight: bold">
+      <tr>
+        <th scope="col">사진</th>
+        <th scope="col">학번</th>
+        <th scope="col">이름</th>
+        <th scope="col">출석</th>
+        <th scope="col">지각</th>
+        <th scope="col">결석</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">사진</th>
+        <td>201515300</td>
+        <td>장우석</td>
+        <td>O</td>
+        <td>X</td>
+        <td>X</td>
+      </tr>
+      <tr>
+        <th scope="row">사진</th>
+        <td>201515300</td>
+        <td>장우석</td>
+        <td>O</td>
+        <td>X</td>
+        <td>X</td>
+      </tr>
+      <tr>
+        <th scope="row">사진</th>
+        <td>201515300</td>
+        <td>장우석</td>
+        <td>O</td>
+        <td>X</td>
+        <td>X</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div style="margin: 4rem 7% 0 7%; text-align: end">
+  <button style="font-size: 25px; background-color: #ffdc6e; border-color: #b7b7b7; border-radius: 6px; padding: 6px; margin-right: 1rem">자동 출석</button>
+  <button style="font-size: 25px; background-color: #ffa137; border-color: #b7b7b7; border-radius: 6px; padding: 6px">출석 저장</button>
+</div>
+
+{% endblock content %}

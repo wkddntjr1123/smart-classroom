@@ -1,7 +1,24 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.models import User
+from authentication.models import User
 from django.contrib import auth
+
+
+@csrf_exempt
+def register(request) : 
+    if request.method == "POST" :   #POST
+        new_user = User()
+        new_user.username = request.POST['username']
+        new_user.set_password(request.POST['password']) #비밀번호 암호화해서 저장
+        new_user.name = request.POST['name']
+        new_user.student_ID = request.POST['student_ID']
+        new_user.save() #DB에 저장하고
+        
+        auth.login(request,new_user) #로그인후 메인페이지로
+        return redirect("index")
+    
+    else :  #GET으로 오면 회원가입 양식 띄워주기
+        return render(request,"authentication/register.html")
 
 @csrf_exempt
 def login(request) : 

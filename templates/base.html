@@ -72,25 +72,23 @@
   {% if user.is_staff%}
   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 5rem; font-weight: bold; padding: 0">
     <div class="container-fluid" style="height: 100%">
-      <a class="navbar-brand" href="/">스마트강의실</a>
+      <a class="navbar-brand" href="/">스마트 출결시스템</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style="height: 100%">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 5rem; font-size: 21px; height: 100%">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">출석관리</a>
+            <a class="nav-link" aria-current="page" href="{% url 'professor:manage-attendance' %}">출석관리</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="#">강의관리</a>
           </li>
         </ul>
       </div>
-      <span style="display: inline-block; font-size: 16px; margin-right: 2rem"
-        >{% if user.is_authenticated %}{{user.last_name}}{{user.first_name}}님 환영합니다!{% endif %}</span
-      >
+      <span style="display: inline-block; font-size: 16px; margin-right: 2rem">{% if user.is_authenticated %}{{user.name}}님 환영합니다{% endif %}</span>
       {% if user.is_authenticated %}
-      <button class="btn btn-primary" style="margin-right: 3.5rem" onclick="goLogOut()">Log Out</button>
+      <button class="btn btn-primary" style="margin-right: 3.5rem" onclick="window.location.href='/authentication/logout'">Log Out</button>
       {% else %}
-      <button class="btn btn-primary" style="margin-right: 3.5rem" onclick="goLogIn()">Log In</button>
+      <button class="btn btn-primary" style="margin-right: 3.5rem" onclick="window.location.href='/authentication/login'">Log In</button>
       {% endif %}
     </div>
   </nav>
@@ -99,7 +97,7 @@
   {% if user.is_authenticated and not user.is_staff%}
   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 5rem; font-weight: bold; padding: 0">
     <div class="container-fluid" style="height: 100%">
-      <a class="navbar-brand" href="/">스마트강의실</a>
+      <a class="navbar-brand" href="/">스마트 출결시스템</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style="height: 100%">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 5rem; font-size: 21px; height: 100%">
@@ -111,13 +109,11 @@
           </li>
         </ul>
       </div>
-      <span style="display: inline-block; font-size: 16px; margin-right: 2rem"
-        >{% if user.is_authenticated %}{{user.last_name}}{{user.first_name}}님 환영합니다!{% endif %}</span
-      >
+      <span style="display: inline-block; font-size: 16px; margin-right: 2rem">{% if user.is_authenticated %}{{user.name}}님 환영합니다{% endif %}</span>
       {% if user.is_authenticated %}
-      <button class="btn btn-primary" style="margin-right: 3.5rem" onclick="goLogOut()">Log Out</button>
+      <button class="btn btn-primary" style="margin-right: 3.5rem" onclick="window.location.href='/authentication/logout'">Log Out</button>
       {% else %}
-      <button class="btn btn-primary" style="margin-right: 3.5rem" onclick="goLogIn()">Log In</button>
+      <button class="btn btn-primary" style="margin-right: 3.5rem" onclick="window.location.href='/authentication/login'">Log In</button>
       {% endif %}
     </div>
   </nav>
@@ -127,23 +123,4 @@
       <span style="font-weight: bold">201515300 장우석&nbsp;&nbsp; 201711111 권지연 </span><span>&nbsp;|&nbsp;&nbsp;&nbsp;마이크로프로세서 프로젝트</span>
     </div>
   </footer>
-  <script>
-    const goHome = () => {
-      window.location.href = "/";
-    };
-    const goLogIn = () => {
-      window.location.href = "/authentication/login";
-    };
-    const goLogOut = () => {
-      window.location.href = "/authentication/logout";
-    };
-
-    ("{% if logout_message %}");
-    alert("{{logout_message}}"); //로그아웃 알림
-    window.open(`{% url 'index'%}`, "_self")("{% endif %}");
-
-    ("{% if not user.is_authenticated and not isLoginPage %}");
-    window.location.href = "/authentication/login";
-    ("{% endif %}");
-  </script>
 </body>

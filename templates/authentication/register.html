@@ -6,7 +6,6 @@
   }
 </style>
 {% endblock head %} {% block content %}
-
 <div class="register-area" style="height: 80%; display: flex; justify-content: center">
   <div class="box-for-overflow" style="height: 100%; display: flex; width: 32rem; align-items: center">
     <div class="col-md-12 col-xs-12 login-blocks">
@@ -22,20 +21,27 @@
             line-height: 30px;
           "
         >
-          Login
+          Register
         </h2>
       </div>
-      <form action="{% url 'authentication:login'%}" method="post" id="login_form">
+      <form action="{% url 'authentication:register'%}" method="post" id="register_form">
         {% csrf_token %}
         <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">
-          <input type="text" class="form-control" name="username" id="id_input" placeholder="아이디" style="margin: auto" />
+          <input type="text" class="form-control" name="username" id="id_input" placeholder="아이디" style="margin: auto" required />
         </div>
-        <div class="form-group">
-          <input type="password" class="form-control" name="password" id="password_input" placeholder="비밀번호" style="margin: auto" />
+        <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">
+          <input type="password" class="form-control" name="password" id="password_input" placeholder="비밀번호" style="margin: auto" required />
+        </div>
+        <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">
+          <input type="text" class="form-control" name="student_ID" id="password_input" placeholder="학번" style="margin: auto" required />
+        </div>
+        <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">
+          <input type="text" class="form-control" name="name" id="password_input" placeholder="이름" style="margin: auto" required />
         </div>
 
-        <div class="text-center">
-          <button
+        <div class="text-center" st>
+          <input type="submit"
+          value="register"
             class="btn btn-primary"
             type="button"
             id="submit_btn"
@@ -50,30 +56,26 @@
               margin-top: 2rem;
               font-size: 19px;
             "
-            onclick="onSubmit()"
           >
-            Log in
           </button>
-          <a href="/authentication/register" style="display: block; color: #d27e04; font-weight: bold; margin-bottom: 1.5rem">회원가입</a>
+          <a href="/authentication/login" style="display: block; color: #d27e04; font-weight: bold; margin-bottom: 1.5rem">이전으로</a>
         </div>
-
-        <div style="text-align: center">{% if error %} {{error}} {% endif %}</div>
       </form>
     </div>
   </div>
 </div>
 <script>
   const onSubmit = () => {
-    document.getElementById("login_form").submit();
+    document.getElementById("register_form").submit();
   };
-  document.getElementById("login_form").addEventListener(
+  document.getElementById("register_form").addEventListener(
     "keydown",
 
     function (event) {
       //엔터키 submit 이벤트 달기
       if (event.keyCode === 13) {
         event.preventDefault();
-        document.getElementById("login_form").submit();
+        document.getElementById("register_form").submit();
       }
     },
     true,
