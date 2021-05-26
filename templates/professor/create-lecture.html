@@ -4,27 +4,21 @@
     background-color: #a0b9dd !important;
     transition: 0.5s;
   }
+  .head_title::after {
+    content: "";
+    width: 90%;
+    position: absolute;
+    height: 4px;
+    background: #858585;
+    left: 62px;
+    top: 225px;
+  }
 </style>
 {% endblock head %} {% block content %}
-
-<div class="register-area" style="height: 80%; display: flex; justify-content: center">
+<div class="head_title" style="font-size: 32px; margin: 5rem 4rem; text-shadow: 1px 1px 1px #084298">> 강의 등록</div>
+<div class="register-area" style="height: 36%; display: flex; justify-content: center">
   <div class="box-for-overflow" style="height: 100%; display: flex; width: 32rem; align-items: center">
     <div class="col-md-12 col-xs-12 login-blocks">
-      <div id="login_box" style="text-align: center; margin-top: 2%">
-        <h2
-          style="
-            display: inline;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            background: transparent none repeat scroll 0% 0%;
-            border-bottom: 2px solid #a08049;
-            font-size: 21px;
-            line-height: 30px;
-          "
-        >
-          강의 등록
-        </h2>
-      </div>
       <form action="{% url 'professor:create-lecture'%}" method="post" id="create_form">
         {% csrf_token %}
         <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">

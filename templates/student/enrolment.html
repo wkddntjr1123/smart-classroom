@@ -1,0 +1,92 @@
+{% extends 'base.html' %} {% block head %}
+<style>
+  #submit_btn:hover {
+    background-color: #a0b9dd !important;
+    transition: 0.5s;
+  }
+  .head_title::after {
+    content: "";
+    width: 90%;
+    position: absolute;
+    height: 4px;
+    background: #858585;
+    left: 62px;
+    top: 225px;
+  }
+</style>
+{% endblock head %} {% block content %}
+<div class="head_title" style="font-size: 32px; margin: 5rem 4rem; text-shadow: 1px 1px 1px #084298">> 수강 신청</div>
+<div class="container">
+  <table class="table table-light table-striped" style="font-size: 21px; text-align: center">
+    <thead style="font-weight: bold">
+      <tr>
+        <th scope="col">강의명</th>
+        <th scope="col">학생수</th>
+        <th scope="col">시간</th>
+        <th scope="col">수강신청</th>
+      </tr>
+    </thead>
+      <tbody>
+          {% for data in lecture_and_pupil %}
+          <tr>
+              <td scope="row">{{data.0.title}}</th>
+              <td>{{data.1}}</td>
+              <td>{{data.0.period}}</td>
+              <td style="color: #009ef0;
+              font-size: 18px;
+              font-weight: bold;cursor:pointer;"><button onclick="enroll('{{data.0.id}}');" value="{{data.0.id}}" style="border: 0;
+              color: #0079ff;
+              font-weight: bold;background: none;">신청하기</button></td>
+              <input type="hidden" name="lecture_id" value="{{data.0.id}}">
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+</div>
+<div style="margin: 2rem 7% 0 7%; text-align: end">
+    <a href="../my-attendance" style="display: inline-block; color: #d27e04; font-size: 23px;font-weight: bold; margin-bottom: 1.5rem; margin-right: 1.5rem; text-align: center"
+    >이전으로</a
+  >
+</div>
+<script>
+  async function enroll(id) {
+    let headers = new Headers();
+    let csrftoken = getCookie('csrftoken');
+    headers.append('X-CSRFToken', csrftoken);
+    headers.append('Accept', 'application/json, text/plain, */*');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+    const init = {
+        method: "POST",
+        headers: headers,
+        credentials : "include",
+        body: JSON.stringify({
+            lecture_id:id
+        })
+    }
+    const response = await fetch("{% url 'student:enrolment' %}", init)
+    const data = await response.json();
+    if(data.success){
+        alert("등록이 완료되었습니다!")
+    }
+    if(data.fail){
+        alert("이미 수강신청을 한 과목입니다!")
+    }
+}
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+</script>
+{% endblock content %}

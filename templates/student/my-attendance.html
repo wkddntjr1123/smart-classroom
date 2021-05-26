@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% block head %}
+{% extends 'base.html' %} {% block head %}
 <style>
   .head_title::after {
     content: "";
@@ -10,29 +10,27 @@
     top: 225px;
   }
 </style>
-{% endblock head %} {% block content %}
-<div class="head_title" style="font-size: 32px; margin: 5rem 4rem; text-shadow: 1px 1px 1px #084298">> 진행중인 강의</div>
+{% endblock head %}{% block content %}
+<div class="head_title" style="font-size: 32px; margin: 5rem 4rem; text-shadow: 1px 1px 1px #084298">> 수강중인 강의</div>
 <div class="container">
   <table class="table table-light table-striped" style="font-size: 21px; text-align: center">
     <thead style="font-weight: bold">
       <tr>
         <th scope="col">강의명</th>
-        <th scope="col">학생수</th>
         <th scope="col">시간</th>
-        <th scope="col">관리</th>
+        <th scope="col">출석부</th>
       </tr>
     </thead>
     <tbody>
-      {% for data in lecture_and_pupil %}
+      {% for lecture in mylectureArr %}
       <tr>
-        <td scope="row">{{data.0.title}}</th>
-        <td>{{data.1}}</td>
-        <td>{{data.0.period}}</td>
+        <td scope="row">{{lecture.course.title}}</th>
+        <td>{{lecture.course.period}}</td>
         <td style="color: #009ef0;
         font-size: 18px;
-        font-weight: bold;cursor:pointer;"><button onclick="goDetail('{{data.0.id}}');" value="{{data.0.id}}" style="border: 0;
+        font-weight: bold;cursor:pointer;"><button onclick="goDetail('{{lecture.course.id}}');" value="{{lecture.course.id}}" style="border: 0;
         color: #0079ff;
-        font-weight: bold;background: none;">출결관리</button></td>
+        font-weight: bold;background: none;">출석확인</button></td>
       </tr>
      {% endfor %}
     </tbody>
@@ -40,15 +38,15 @@
 </div>
 <div style="margin: 4rem 7% 0 7%; text-align: end">
   <button
-    onclick="window.location.href='../../professor/create-lecture'"
+    onclick="window.location.href='../../student/enrolment'"
     style="font-size: 25px; background-color: #ffa137; border-color: #b7b7b7; border-radius: 6px; padding: 6px"
   >
-    새 강의등록
+    수강신청
   </button>
 </div>
 <script>
   function goDetail(id) {
-    window.location.href = `../manage-attendance/${id}/1`;
+    window.location.href = `../confirm-attendance/${id}/1`;
   }
 </script>
 {% endblock content %}

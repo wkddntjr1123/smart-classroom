@@ -99,10 +99,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style="height: 100%">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 5rem; font-size: 21px; height: 100%">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">나의출석</a>
+            <a class="nav-link" aria-current="page" href="{% url 'student:my-attendance' %}">나의출석</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">나의정보</a>
+            <a class="nav-link" href="{% url 'student:my-info' %}">나의정보</a>
           </li>
         </ul>
       </div>
@@ -122,7 +122,7 @@
   </footer>
 </body>
 
-{% if not user.is_authenticated and not isLoginPage %}
+{% if not user.is_authenticated and not isLoginPage and not isRegister%}
 <script>
   window.location.href = "/authentication/login";
 </script>

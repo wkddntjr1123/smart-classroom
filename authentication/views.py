@@ -17,7 +17,8 @@ def register(request) :
         return redirect("index")
     
     else :  #GET으로 오면 회원가입 양식 띄워주기
-        return render(request,"authentication/register.html")
+        context={"isRegister":True}
+        return render(request,"authentication/register.html",context)
 
 @csrf_exempt
 def login(request) : 

@@ -58,6 +58,7 @@
     <tbody>
       <!-- attend.pupil이 학생객체 -->
       {% for attend in attend_obj %}
+      {% if attend.pupil == user %}
       <tr>
         <td scope="row">
           <img src="{{attend.pupil.photo.url}}" alt="" width="150px" height="150px" />
@@ -114,16 +115,16 @@
         {% endif %}
         
       </tr>
+      {% endif %}
       {% endfor %}
     </tbody>
   </table>
 </div>
 <div style="margin: 4rem 7% 0 7%; text-align: end">
-  <a href="../../manage-lecture" style="display: inline-block; color: #d27e04; font-weight: bold; margin-bottom: 1.5rem; margin-right: 1.5rem; text-align: center"
+  <a href="../../my-attendance" style="display: inline-block; color: #d27e04; font-weight: bold; margin-bottom: 1.5rem; margin-right: 1.5rem; text-align: center"
     >이전으로</a
   >
-  <button style="font-size: 25px; background-color: #ffdc6e; border-color: #b7b7b7; border-radius: 6px; padding: 6px; margin-right: 1rem">자동 출석</button>
-  <button style="font-size: 25px; background-color: #ffa137; border-color: #b7b7b7; border-radius: 6px; padding: 6px">수정하기</button>
+  <button style="font-size: 25px; background-color: #ffdc6e; border-color: #b7b7b7; border-radius: 6px; padding: 6px; margin-right: 1rem">수정 요청</button>
 </div>
 
 <script>
