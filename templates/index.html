@@ -1,9 +1,5 @@
-{% extends 'base.html' %} {% block content %}
-
+{% extends 'base.html' %} {% block content %} {% if user.is_staff %}
 <div style="display: flex; justify-content: center; height: 80%; align-items: center; font-size: 60px; font-weight: bold">교수 페이지</div>
-{% if not user.is_authenticated and not isLoginPage %}
-<script>
-  window.location.href = "/authentication/login";
-</script>
-
+{% else %}
+<div style="display: flex; justify-content: center; height: 80%; align-items: center; font-size: 60px; font-weight: bold">학생 페이지</div>
 {% endif %} {% endblock content %}

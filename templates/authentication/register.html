@@ -27,13 +27,10 @@
       <form action="{% url 'authentication:register'%}" method="post" id="register_form">
         {% csrf_token %}
         <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">
-          <input type="text" class="form-control" name="username" id="id_input" placeholder="아이디" style="margin: auto" required />
+          <input type="text" class="form-control" name="username" id="id_input" placeholder="학번" style="margin: auto" required />
         </div>
         <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">
           <input type="password" class="form-control" name="password" id="password_input" placeholder="비밀번호" style="margin: auto" required />
-        </div>
-        <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">
-          <input type="text" class="form-control" name="student_ID" id="password_input" placeholder="학번" style="margin: auto" required />
         </div>
         <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">
           <input type="text" class="form-control" name="name" id="password_input" placeholder="이름" style="margin: auto" required />

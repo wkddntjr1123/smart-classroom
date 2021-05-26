@@ -1,0 +1,122 @@
+{% extends 'base.html' %} {% block head %}
+<style>
+  #submit_btn:hover {
+    background-color: #a0b9dd !important;
+    transition: 0.5s;
+  }
+</style>
+{% endblock head %} {% block content %}
+
+<div class="register-area" style="height: 80%; display: flex; justify-content: center">
+  <div class="box-for-overflow" style="height: 100%; display: flex; width: 32rem; align-items: center">
+    <div class="col-md-12 col-xs-12 login-blocks">
+      <div id="login_box" style="text-align: center; margin-top: 2%">
+        <h2
+          style="
+            display: inline;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            background: transparent none repeat scroll 0% 0%;
+            border-bottom: 2px solid #a08049;
+            font-size: 21px;
+            line-height: 30px;
+          "
+        >
+          강의 등록
+        </h2>
+      </div>
+      <form action="{% url 'professor:create-lecture'%}" method="post" id="create_form">
+        {% csrf_token %}
+        <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">
+          <input type="text" class="form-control" name="title" placeholder="강의명" style="margin: auto" />
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" value="강의자 : {{user.name}} 교수" style="margin: auto" disabled />
+        </div>
+        <input type="hidden" name="teacher_id" value="{{user.id}}" />
+        <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">
+          <select id="select_day" style="width: 32%">
+            <option value="월요일">월요일</option>
+            <option value="화요일">화요일</option>
+            <option value="수요일">수요일</option>
+            <option value="목요일">목요일</option>
+            <option value="금요일">금요일</option>
+            <option value="토요일">토요일</option>
+            <option value="일요일">일요일</option>
+          </select>
+          <select id="select_period" style="width: 33%">
+            <option value="1교시">1교시</option>
+            <option value="2교시">2교시</option>
+            <option value="3교시">3교시</option>
+            <option value="4교시">4교시</option>
+            <option value="5교시">5교시</option>
+            <option value="6교시">6교시</option>
+            <option value="7교시">7교시</option>
+            <option value="8교시">8교시</option>
+            <option value="9교시">9교시</option>
+            <option value="10교시">10교시</option>
+            <option value="11교시">11교시</option>
+            <option value="12교시">12교시</option>
+          </select>
+          <input
+            type="button"
+            onclick="addPeriod()"
+            value="날짜추가"
+            style="font-size: 13px; padding: 5px; background-color: #ffe38e; border-color: #a2a2a2; border-radius: 7px; height: 25px"
+          />
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="period" name="period" value="" style="margin: auto; cursor: unset" readonly />
+        </div>
+        <div class="text-center">
+          <button
+            class="btn btn-primary"
+            type="button"
+            id="submit_btn"
+            style="
+              margin-top: 1%;
+              margin-bottom: 3%;
+              color: #fff;
+              background-color: #c2c2c2;
+              border-color: #c2c2c2;
+              border-radius: 5px;
+              font-weight: 400;
+              margin-top: 2rem;
+              font-size: 19px;
+            "
+            onclick="onSubmit()"
+          >
+            등록하기
+          </button>
+        </div>
+      </form>
+      <a href="{% url 'professor:manage-lecture'%}" style="display: block; color: #d27e04; font-weight: bold; margin-bottom: 1.5rem; text-align: center"
+        >이전으로</a
+      >
+    </div>
+  </div>
+</div>
+<script>
+  const onSubmit = () => {
+    document.getElementById("create_form").submit();
+  };
+  document.getElementById("create_form").addEventListener(
+    "keydown",
+
+    function (event) {
+      //엔터키 submit 이벤트 달기
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("create_form").submit();
+      }
+    },
+    true,
+  );
+
+  const addPeriod = (e) => {
+    const day = document.getElementById("select_day").value;
+    const period = document.getElementById("select_period").value;
+    document.getElementById("period").value += `${day}-${period}  `;
+  };
+</script>
+{% endblock content %}

@@ -123,8 +123,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticCollect')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-MEDIA_URL = 'media/' #이 url로 접속하면, 미디어파일의 경로로 들어가도록 한다
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  #이 경로로 미디어 파일 저장
+MEDIA_URL = '/media/' #이 url로 접속하면, 미디어파일의 경로로 들어가도록 한다
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  #이 경로로 미디어 파일 저장
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

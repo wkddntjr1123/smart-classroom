@@ -2,9 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
 
+
 class User(AbstractUser) :
     name = models.CharField(max_length=30)
-    student_ID = models.CharField(max_length=30)
     photo = models.ImageField(upload_to='images/',blank=True,null=True)
 
 class UserManager(BaseUserManager):

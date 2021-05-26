@@ -77,10 +77,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style="height: 100%">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 5rem; font-size: 21px; height: 100%">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'professor:manage-attendance' %}">출석관리</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">강의관리</a>
+            <a class="nav-link" aria-current="page" href="{% url 'professor:manage-lecture' %}">출석관리</a>
           </li>
         </ul>
       </div>
@@ -124,3 +121,10 @@
     </div>
   </footer>
 </body>
+
+{% if not user.is_authenticated and not isLoginPage %}
+<script>
+  window.location.href = "/authentication/login";
+</script>
+
+{% endif %}
