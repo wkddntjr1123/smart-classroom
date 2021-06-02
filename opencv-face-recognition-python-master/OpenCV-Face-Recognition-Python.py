@@ -54,7 +54,7 @@ import numpy as np
 #근데 내 학번이 201515300이면 subjects[201515300]을 해야하는데, dict형식으로 코드를 바꿔야 할듯 (메모리 에러 안뜨면 걍 냅두고)
 subjects = [None]*9999999
 #subjects = ["", "JangWooSeok", "Elvis Presley"]
-subjects[201515300] = "plz"
+subjects[1515300] = "plz"
 
 # ### Prepare training data
 
