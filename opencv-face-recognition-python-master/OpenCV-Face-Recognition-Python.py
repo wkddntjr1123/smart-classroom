@@ -162,6 +162,11 @@ def prepare_training_data(data_folder_path):
         #format of dir name = slabel
         #, so removing letter 's' from dir_name will give us label
         label = int(dir_name.replace("s", ""))
+        '''
+        subjects에 학번 넣기 위해서 여기서 추가
+        '''
+        subjects[label] = "20"+str(label)
+        
         
         #build path of directory containin images for current subject subject
         #sample subject_dir_path = "training-data/s1"
@@ -319,10 +324,11 @@ def predict(test_img):
     #predict the image using our face recognizer 
     label, confidence = face_recognizer.predict(face)
     #get name of respective label returned by face recognizer
+
     '''
-    label_text에 20이 짤린 학번이 들어감. 따라서 앞에 20붙여주자.
+    여기서 학번 이용해서 db 접근해야함
     '''
-    label_text = "20" + subjects[label]
+    label_text = subjects[label]
     
     #draw a rectangle around face detected
     draw_rectangle(img, rect)
