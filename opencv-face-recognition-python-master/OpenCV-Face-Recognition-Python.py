@@ -163,7 +163,7 @@ def prepare_training_data(data_folder_path):
         #detect face and add face to list of faces
         for image_name in subject_images_names:
             
-            #ignore system files like .DS_Store
+            #.으로 숨김처리된 파일은 무시한다
             if image_name.startswith("."):
                 continue;
             
