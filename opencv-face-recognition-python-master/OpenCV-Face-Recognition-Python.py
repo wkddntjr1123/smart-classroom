@@ -99,7 +99,7 @@ def detect_face(img):
     
     #load OpenCV face detector, I am using LBP which is fast
     #there is also a more accurate but slow Haar classifier
-    face_cascade = cv2.CascadeClassifier('opencv-files/lbpcascade_frontalface.xml')
+    face_cascade = cv2.CascadeClassifier('/home/pi/Desktop/smart_classroom/opencv-face-recognition-python-master/opencv-files/lbpcascade_frontalface.xml')
 
     #let's detect multiscale (some images may be closer to camera than others) images
     #result is a list of faces
@@ -322,9 +322,9 @@ def predict(test_img):
 
 print("Predicting images...")
 
-#load test images
-test_img1 = cv2.imread("test-data/test1.jpg")
-test_img2 = cv2.imread("test-data/test2.jpg")
+#예측할 사진. 여기에 라즈베리파이로 촬영한 사진을 주면 될듯
+test_img1 = cv2.imread("/home/pi/Desktop/smart_classroom/opencv-face-recognition-python-master/test-data/test1.jpg")
+test_img2 = cv2.imread("/home/pi/Desktop/smart_classroom/opencv-face-recognition-python-master/test-data/test2.jpg")
 
 #perform a prediction
 predicted_img1 = predict(test_img1)
