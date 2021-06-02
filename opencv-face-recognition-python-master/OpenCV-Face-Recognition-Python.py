@@ -51,10 +51,20 @@ import numpy as np
 # In[2]:
 
 #there is no label 0 in our training data so subject name for index/label 0 is empty
-#근데 내 학번이 201515300이면 subjects[201515300]을 해야하는데, dict형식으로 코드를 바꿔야 할듯 (메모리 에러 안뜨면 걍 냅두고)
+'''
+카메라로 영상 찍어서 -> 프레임 단위 사진으로 만들어서 -> s어쩌구형식에 폴더에 -> 1,2,3,4,..로 넣으면 학습 자동 진행
+'''
+
+'''
+근데 내 학번이 201515300이면 subjects[201515300]을 해야하는데, dict형식으로 코드를 바꿔야 할듯 (메모리 에러 안뜨면 걍 냅두고)
+9999999까지는 괜찮음. 그럼 학번 맨 앞에 20을 제외하고 코드 짜야함. subject[1515300]="201515300"이렇게 들어가게 코드 짜야함
+아니면 걍 인식된 화면을 보여줄 필요 없으면 바로 출석 db변경해도 될듯
+
+아마 예상으로는 인식되면 1515300같이 20이 짤린 학번이 출력되니까, 이를 이용해서 db에 해당 학번으로 된 녀석 출석 변경하면 될듯
+'''
 subjects = [None]*9999999
 #subjects = ["", "JangWooSeok", "Elvis Presley"]
-subjects[1515300] = "plz"
+#subjects[1515300] = "plz"
 
 # ### Prepare training data
 
@@ -309,7 +319,10 @@ def predict(test_img):
     #predict the image using our face recognizer 
     label, confidence = face_recognizer.predict(face)
     #get name of respective label returned by face recognizer
-    label_text = subjects[label]
+    '''
+    label_text에 20이 짤린 학번이 들어감. 따라서 앞에 20붙여주자.
+    '''
+    label_text = "20" + subjects[label]
     
     #draw a rectangle around face detected
     draw_rectangle(img, rect)
