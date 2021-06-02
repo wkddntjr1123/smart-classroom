@@ -52,8 +52,8 @@ import numpy as np
 
 #there is no label 0 in our training data so subject name for index/label 0 is empty
 #근데 내 학번이 201515300이면 subjects[201515300]을 해야하는데
-subjects = ["", "1번테스트", "Elvis Presley"]
-
+subjects = ["", "JangWooSeok", "Elvis Presley"]
+subjects[201515300] = "plz"
 
 # ### Prepare training data
 
