@@ -220,7 +220,7 @@ def prepare_training_data(data_folder_path):
 #one list will contain all the faces
 #and other list will contain respective labels for each face
 print("Preparing data...")
-faces, labels = prepare_training_data("training-data")
+faces, labels = prepare_training_data("/home/pi/Desktop/smart_classroom/media/images")
 print("Data prepared")
 
 #print total faces and labels
