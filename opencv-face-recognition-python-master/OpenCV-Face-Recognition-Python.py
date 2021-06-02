@@ -219,8 +219,10 @@ def prepare_training_data(data_folder_path):
 #data will be in two lists of same size
 #one list will contain all the faces
 #and other list will contain respective labels for each face
+#media폴더에서 listdir을 실행하여 학습할 데이터가 담긴 폴더들을 가져온다. (폴더의 시작 문자는 s로 되어있다. startwith('s'))
+#그리고 s문자를 공백으로 대체한 라벨값이 labels에 append되는 매커니즘
 print("Preparing data...")
-faces, labels = prepare_training_data("/home/pi/Desktop/smart_classroom/media/images")
+faces, labels = prepare_training_data("/home/pi/Desktop/smart_classroom/media")
 print("Data prepared")
 
 #print total faces and labels
