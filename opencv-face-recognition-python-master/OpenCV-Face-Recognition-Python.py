@@ -345,7 +345,7 @@ def predict(test_img):
 print("Predicting images...")
 
 #예측할 사진. 여기에 라즈베리파이로 촬영한 사진을 주면 될듯
-test_img1 = cv2.imread("/home/pi/Desktop/smart_classroom/opencv-face-recognition-python-master/test-data/test1.jpg")
+test_img1 = cv2.imread("/home/pi/Desktop/smart_classroom/media/images/jeremiah-curtis-e3UpN46oBT8-unsplash_7NLwXAR.jpg")
 test_img2 = cv2.imread("/home/pi/Desktop/smart_classroom/opencv-face-recognition-python-master/test-data/test2.jpg")
 
 #perform a prediction
