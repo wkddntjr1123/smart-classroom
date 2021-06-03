@@ -9,11 +9,9 @@ import pickle
 import time
 import cv2
 
-#Initialize 'currentname' to trigger only when a new person is identified.
+
 currentname = "unknown"
-#Determine faces from encodings.pickle file model created from train_model.py
 encodingsP = "/home/pi/Desktop/smart_classroom/facial_recognition/encodings.pickle"
-#use this xml file
 cascade = "/home/pi/Desktop/smart_classroom/facial_recognition/haarcascade_frontalface_default.xml"
 
 # load the known faces and embeddings along with OpenCV's Haar

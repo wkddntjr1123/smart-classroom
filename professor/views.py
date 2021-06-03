@@ -128,13 +128,13 @@ def autoAttend(request) :
             break
 
         fps.update()
-        
-        fps.stop()
-        print("[INFO] elasped time: {:.2f}".format(fps.elapsed()))
-        print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))
+    
+    fps.stop()
+    print("[INFO] elasped time: {:.2f}".format(fps.elapsed()))
+    print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))
 
-        # do a bit of cleanup
-        cv2.destroyAllWindows()
-        vs.stop()
+    # do a bit of cleanup
+    cv2.destroyAllWindows()
+    vs.stop()
         
     return JsonResponse({"success":"fffds"})
