@@ -144,4 +144,4 @@ def autoAttend(request,lecture_id,week) :
             
             data.save() #결과 db에 저장
                 
-    return JsonResponse({"success":"fffds"})
+    return JsonResponse({"success": True})
