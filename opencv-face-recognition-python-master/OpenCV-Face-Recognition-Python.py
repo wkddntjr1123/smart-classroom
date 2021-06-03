@@ -328,7 +328,7 @@ def predict(test_img):
     '''
     여기서 학번 이용해서 db 접근해야함
     '''
-    print(label)
+
     label_text = subjects[label]
     
     #draw a rectangle around face detected
@@ -350,7 +350,10 @@ test_img2 = cv2.imread("/home/pi/Desktop/smart_classroom/opencv-face-recognition
 
 #perform a prediction
 predicted_img1 = predict(test_img1)
+
 predicted_img2 = predict(test_img2)
+print(predicted_img1)
+print(predicted_img2)
 print("Prediction complete")
 
 #display both images
