@@ -7,6 +7,6 @@ urlpatterns = [
     path("manage-attendance/<int:lecture_id>/<int:weekNum>", views.manageAttendance, name="manage-attendance"),
     path("manage-lecture/", views.manageLecture, name="manage-lecture"),
     path("create-lecture/", views.createLecture, name="create-lecture"),
-    path("auto_attend/", views.autoAttend, name="auto_attend"),
+    path("auto_attend/<int:lecture_id>/<int:week>", views.autoAttend, name="auto_attend"),
     
 ]

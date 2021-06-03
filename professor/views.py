@@ -16,7 +16,7 @@ def manageAttendance(request, lecture_id, weekNum) :
     lecture = Lecture.objects.get(id=int(lecture_id)) #강의 객체
     attend = Attendance.objects.filter(course=lecture)  #강의 객체에 연결된 출석 객체들 (pupil속성에 수강생, state에 출석현황 저장)
      
-    context={"title":lecture.title, "attend_obj":attend, "week":weekNum}
+    context={"title":lecture.title, "attend_obj":attend, "week":weekNum, "lecture_id":lecture_id}
     return render(request,"professor/manage-attendance.html",context)
 
 def manageLecture(request) :
@@ -48,8 +48,8 @@ def createLecture(request):
         return render(request,"professor/create-lecture.html")
     
     
-def autoAttend(request) :
- 
+def autoAttend(request,lecture_id,week) :
+    '''
     currentname = "unknown"
     encodingsP = "/home/pi/Desktop/smart_classroom/facial_recognition/encodings.pickle"
     cascade = "/home/pi/Desktop/smart_classroom/facial_recognition/haarcascade_frontalface_default.xml"
@@ -127,14 +127,17 @@ def autoAttend(request) :
 
     print(names)
     '''
-    def 자동출석(request,recture_id,week) :
-        1. 사진 촬영
-        2. 유저증명사진 읽어와서 사진과 비교 진행해서 일치하는 유저객체를 배열에 저장(user_arr)
-        3. alldata = Attendance.objects.filter(course=Lecture.objects.get(id=recture_id)) 해당 과목 Attendence모두 가져옴
-        4. week값을 토대로 alldata.week{i} = "absent" 로 모두 결석처리
-        5. for user in user_arr :
-            alldata.filter(pupul=user)
-            alldata.week{i} = "attend"
-        6. return render() 로 화면 갱신
-    '''
+    names = []
+    alldata = Attendance.objects.filter(course=Lecture.objects.get(id=lecture_id)) # 해당 과목 Attendence를 모두 가져옴
+    weekStr = "week"+str(week) #주차 정보
+    #만약 Attendece정보가 존재하면
+    if(len(alldata)) :
+        for data in alldata : #모든 attendence를 순회하면서
+            
+            data[weekStr] = "absent" #현재 주차의 출석을 모두 결석으로 처리한 후
+
+            if data.pupil.username in names : #만약 names에 학번이 존재하면(얼굴인식됐다면)
+            
+                data[weekStr] = "attend"    #출석 처리
+                
     return JsonResponse({"success":"fffds"})

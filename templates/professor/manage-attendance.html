@@ -133,7 +133,9 @@
   })
 
   document.getElementById("auto_attend").addEventListener("click",()=>{
-    fetch("{% url 'professor:auto_attend' %}").then( res => {console.log(res)})
+    let week= String('{{week}}')
+    let lecture_id = String('{{lecture_id}}')
+    fetch("{% url 'professor:auto_attend' lecture_id=lecture_id week=week %}").then( res => {console.log(res)})
   })
 </script>
 {% endblock content %}
