@@ -95,7 +95,7 @@ def face_recognization (request) :
     video_capture = cv2.VideoCapture(0)
     video_capture.set(3,640)
     video_capture.set(4,480)
-    
+    '''
     while True:
         ret, frame = video_capture.read()
         frame = cv2.flip(frame, -1) 
@@ -104,7 +104,7 @@ def face_recognization (request) :
             break
     video_capture.release()
     cv2.destroyAllwindows()
-
+    '''
     obama_image = face_recognition.load_image_file("/home/pi/Desktop/smart_classroom/media/training/201515300.png")
     obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
 
