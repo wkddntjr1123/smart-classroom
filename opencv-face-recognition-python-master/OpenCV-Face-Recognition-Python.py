@@ -320,7 +320,7 @@ def predict(test_img):
     img = test_img.copy()
     #detect face from the image
     face, rect = detect_face(img)
-
+    print(str(face)+ str(rect))
     #predict the image using our face recognizer 
     label, confidence = face_recognizer.predict(face)
     #get name of respective label returned by face recognizer
