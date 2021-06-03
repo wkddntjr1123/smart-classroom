@@ -141,5 +141,7 @@ def autoAttend(request,lecture_id,week) :
             if data.pupil.username in names : #만약 names에 학번이 존재하면(얼굴인식됐다면)
             
                 data[weekStr] = "attend"    #출석 처리
+            
+            data.save() #결과 db에 저장
                 
     return JsonResponse({"success":"fffds"})
