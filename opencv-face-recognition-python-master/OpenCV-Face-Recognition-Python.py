@@ -330,7 +330,7 @@ def predict(test_img):
     '''
 
     label_text = subjects[label]
-    
+    print(label_text)
     #draw a rectangle around face detected
     draw_rectangle(img, rect)
     #draw name of predicted person
@@ -352,8 +352,7 @@ test_img2 = cv2.imread("/home/pi/Desktop/smart_classroom/opencv-face-recognition
 predicted_img1 = predict(test_img1)
 
 predicted_img2 = predict(test_img2)
-print(predicted_img1)
-print(predicted_img2)
+
 print("Prediction complete")
 
 #display both images
