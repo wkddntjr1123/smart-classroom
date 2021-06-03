@@ -87,9 +87,11 @@ def face_recognization (request) :
     time.sleep(0.1)
     camera.capture(rawCapture, format="bgr")
     image = rawCapture.array
-    print(image)
-    cv2.imshow("Image", image)
+    
+    
+    cv2.imshow("image", image)
     cv2.waitKey(0)
+    camera.close()
     '''
     video_capture = cv2.VideoCapture(0)
     video_capture.set(3,640)
