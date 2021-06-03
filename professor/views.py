@@ -125,6 +125,7 @@ def autoAttend(request) :
     cv2.destroyAllWindows()
     vs.stop()
 
+    print(names)
     '''
     def 자동출석(request,recture_id,week) :
         1. 사진 촬영
