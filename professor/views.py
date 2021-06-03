@@ -49,7 +49,7 @@ def createLecture(request):
     
     
 def autoAttend(request,lecture_id,week) :
-    '''
+    
     currentname = "unknown"
     encodingsP = "/home/pi/Desktop/smart_classroom/facial_recognition/encodings.pickle"
     cascade = "/home/pi/Desktop/smart_classroom/facial_recognition/haarcascade_frontalface_default.xml"
@@ -126,7 +126,7 @@ def autoAttend(request,lecture_id,week) :
     vs.stop()
 
     print(names)
-    '''
+    
     names = []
     alldata = Attendance.objects.filter(course=Lecture.objects.get(id=lecture_id)) # 해당 과목 Attendence를 모두 가져옴
     
