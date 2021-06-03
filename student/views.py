@@ -81,18 +81,17 @@ def face_recognization (request) :
     # specific demo. If you have trouble installing it, try any of the other demos that don't require it instead.
 
     # Get a reference to webcam #0 (the default one)
+    '''
     camera = PiCamera()
 
     rawCapture = PiRGBArray(camera)
     time.sleep(0.1)
     camera.capture(rawCapture, format="bgr")
     image = rawCapture.array
-    
-    
-    cv2.imshow("image", image)
-    cv2.waitKey(0)
-    camera.close()
+    cv2.imshow("Image", image)
+    cv2.waitKey(0)\
     '''
+    
     video_capture = cv2.VideoCapture(0)
     video_capture.set(3,640)
     video_capture.set(4,480)
@@ -105,13 +104,7 @@ def face_recognization (request) :
             break
     video_capture.release()
     cv2.destroyAllwindows()
-    '''
-    return redirect('student:my-info')
-    # Load a sample picture and learn how to recognize it.
-    '''
-    학습할 이미지
-    '''
-'''
+
     obama_image = face_recognition.load_image_file("/home/pi/Desktop/smart_classroom/media/training/201515300.png")
     obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
 
@@ -200,5 +193,5 @@ def face_recognization (request) :
     # Release handle to the webcam
     video_capture.release()
     cv2.destroyAllWindows()
-'''  
- 
+
+    return redirect('student:my-info')
