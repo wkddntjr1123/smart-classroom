@@ -187,7 +187,7 @@ def prepare_training_data(data_folder_path):
             #build image path
             #sample image path = training-data/s1/1.pgm
             image_path = subject_dir_path + "/" + image_name
-            print(image_path)
+       
             #read image
             image = cv2.imread(image_path)
             
@@ -328,6 +328,7 @@ def predict(test_img):
     '''
     여기서 학번 이용해서 db 접근해야함
     '''
+    print(label)
     label_text = subjects[label]
     
     #draw a rectangle around face detected
@@ -353,12 +354,12 @@ predicted_img2 = predict(test_img2)
 print("Prediction complete")
 
 #display both images
-cv2.imshow(subjects[1], cv2.resize(predicted_img1, (400, 500)))
-cv2.imshow(subjects[2], cv2.resize(predicted_img2, (400, 500)))
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-cv2.waitKey(1)
-cv2.destroyAllWindows()
+#cv2.imshow(subjects[1], cv2.resize(predicted_img1, (400, 500)))
+#cv2.imshow(subjects[2], cv2.resize(predicted_img2, (400, 500)))
+#cv2.waitKey(0)
+#cv2.destroyAllWindows()
+#cv2.waitKey(1)
+#cv2.destroyAllWindows()
 
 
 
