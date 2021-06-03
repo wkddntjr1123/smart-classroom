@@ -7,6 +7,9 @@ import json
 import face_recognition
 import cv2
 import numpy as np
+from picamera.array import PiRGBArray
+from picamera import PiCamera
+import time
 
 def myInfo(request) :
     return render(request,'student/my-info.html')
@@ -78,6 +81,15 @@ def face_recognization (request) :
     # specific demo. If you have trouble installing it, try any of the other demos that don't require it instead.
 
     # Get a reference to webcam #0 (the default one)
+    camera = PiCamera()
+
+    rawCapture = PiRGBArray(camera)
+    time.sleep(0.1)
+    camera.capture(rawCapture, format="bgr")
+    image = rawCapture.array
+    cv2.imshow("Image", image)
+    cv2.waitKey(0)
+    '''
     video_capture = cv2.VideoCapture(0)
     video_capture.set(3,640)
     video_capture.set(4,480)
@@ -90,6 +102,8 @@ def face_recognization (request) :
             break
     video_capture.release()
     cv2.destroyAllwindows()
+    '''
+    return redirect('student:my-info')
     # Load a sample picture and learn how to recognize it.
     '''
     학습할 이미지
@@ -184,4 +198,4 @@ def face_recognization (request) :
     video_capture.release()
     cv2.destroyAllWindows()
 '''  
-    return redirect('student:my-info')
+ 
