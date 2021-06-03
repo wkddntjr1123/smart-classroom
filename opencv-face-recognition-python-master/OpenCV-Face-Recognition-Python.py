@@ -192,8 +192,8 @@ def prepare_training_data(data_folder_path):
             image = cv2.imread(image_path)
             
             #display an image window to show the image 
-            cv2.imshow("Training on image...", cv2.resize(image, (400, 500)))
-            cv2.waitKey(100)
+            #cv2.imshow("Training on image...", cv2.resize(image, (400, 500)))
+            #cv2.waitKey(100)
             
             #detect face
             face, rect = detect_face(image)
