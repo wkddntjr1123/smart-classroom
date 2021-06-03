@@ -21,7 +21,7 @@ def myAttendance(request):
     context = {"mylectureArr":mylectureArr}
     return render(request,'student/my-attendance.html',context)
 
-def changeImage(request):
+def changeImage2(request):
     user = User.objects.get(id=request.user.id)
     user.photo = request.FILES['image']
     user.save()
@@ -65,7 +65,7 @@ def enrolment(request):
        
         return render(request,"student/enrolment.html",context)
     
-def face_recognization (request) :
+def changeImage (request) :
     
 
     # This is a demo of running face recognition on live video from your webcam. It's a little more complicated than the
