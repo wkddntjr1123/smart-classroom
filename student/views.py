@@ -92,20 +92,21 @@ def face_recognization (request) :
     cv2.waitKey(0)\
     '''
     
-    video_capture = cv2.VideoCapture(0)
-    video_capture.set(3,640)
-    video_capture.set(4,480)
+    video_capture = cv2.VideoCapture(-1)
+   
     
     while True:
         ret, frame = video_capture.read()
-        frame = cv2.flip(frame, -1) 
-        #cv2.imshow('frame',frame)
+        frame = cv2.flip(frame,0)
+        gray_img=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+        cv2.imshow('result',gray_img)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     video_capture.release()
-    #cv2.destroyAllwindows()
-
-    obama_image = face_recognition.load_image_file("/home/pi/Desktop/smart_classroom/media/training/201515300.png")
+    cv2.destroyAllwindows()
+    '''
+    obama_image = face_recognition.load_image_file("/home/pi/Desktop/smart_classroom/media/s1515300/1.jpg")
+    print(obama_image)
     obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
 
     # Load a second sample picture and learn how to recognize it.
@@ -184,7 +185,7 @@ def face_recognization (request) :
             cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
         # Display the resulting image
-        #cv2.imshow('Video', frame)
+        cv2.imshow('Video', frame)
 
         # Hit 'q' on the keyboard to quit!
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -193,5 +194,5 @@ def face_recognization (request) :
     # Release handle to the webcam
     video_capture.release()
     cv2.destroyAllWindows()
-
+    '''
     return redirect('student:my-info')
