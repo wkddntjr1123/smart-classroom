@@ -47,18 +47,7 @@ def createLecture(request):
     else :
         return render(request,"professor/create-lecture.html")
     
-'''
-def 자동출석(request,recture_id,week) :
-    1. 사진 촬영
-    2. 유저증명사진 읽어와서 사진과 비교 진행해서 일치하는 유저객체를 배열에 저장(user_arr)
-    3. alldata = Attendance.objects.filter(course=Lecture.objects.get(id=recture_id)) 해당 과목 Attendence모두 가져옴
-    4. week값을 토대로 alldata.week{i} = "absent" 로 모두 결석처리
-    5. for user in user_arr :
-        alldata.filter(pupul=user)
-        alldata.week{i} = "attend"
-    6. return render() 로 화면 갱신
-'''
-
+    
 def autoAttend(request) :
  
     currentname = "unknown"
@@ -109,9 +98,8 @@ def autoAttend(request) :
                 
                 if currentname != name:
                     currentname = name
-                    ############culseok code#############
-                    print(currentname)
             
+            #names에 인식된 학번이 담김
             names.append(name)
 
         for ((top, right, bottom, left), name) in zip(boxes, names):
@@ -136,5 +124,16 @@ def autoAttend(request) :
     # do a bit of cleanup
     cv2.destroyAllWindows()
     vs.stop()
-        
+
+    '''
+    def 자동출석(request,recture_id,week) :
+        1. 사진 촬영
+        2. 유저증명사진 읽어와서 사진과 비교 진행해서 일치하는 유저객체를 배열에 저장(user_arr)
+        3. alldata = Attendance.objects.filter(course=Lecture.objects.get(id=recture_id)) 해당 과목 Attendence모두 가져옴
+        4. week값을 토대로 alldata.week{i} = "absent" 로 모두 결석처리
+        5. for user in user_arr :
+            alldata.filter(pupul=user)
+            alldata.week{i} = "attend"
+        6. return render() 로 화면 갱신
+    '''
     return JsonResponse({"success":"fffds"})
