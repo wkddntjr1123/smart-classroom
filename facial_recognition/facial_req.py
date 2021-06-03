@@ -12,7 +12,7 @@ import cv2
 #Initialize 'currentname' to trigger only when a new person is identified.
 currentname = "unknown"
 #Determine faces from encodings.pickle file model created from train_model.py
-encodingsP = "encodings.pickle"
+encodingsP = "/home/pi/Desktop/smart_classroom/facial_recognition/encodings.pickle"
 #use this xml file
 cascade = "haarcascade_frontalface_default.xml"
 
