@@ -27,7 +27,7 @@
           <div class="form-group" style="margin-top: 5%; margin-bottom: 3%">
             <input type="text" class="form-control" value="학번 : {{user.username}}" style="margin: auto" readonly />
           </div>
-          <form id="image_form" action="{% url 'student:change-image' %}" , method="POST" , enctype="multipart/form-data">
+          <form id="image_form" action="{% url 'student:face' %}" , method="POST" , enctype="multipart/form-data">
             {% csrf_token %} {% if user.photo %}
             <img src="{{user.photo.url}}" alt="" width="150px" height="150px" style="display: block; margin: auto" />
             <br /><br />
@@ -51,11 +51,12 @@
 
 <script>
   document.getElementById("submit_btn").addEventListener("click", () => {
-    if (document.getElementById("file_input").files.length) {
+    document.getElementById("image_form").submit();
+    /*if (document.getElementById("file_input").files.length) {
       document.getElementById("image_form").submit();
     } else {
       alert("사진을 먼저 선택해주세요!");
-    }
+    }*/
   });
 </script>
 {% endblock content %}
