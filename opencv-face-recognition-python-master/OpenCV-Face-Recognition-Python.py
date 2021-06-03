@@ -345,19 +345,19 @@ def predict(test_img):
 print("Predicting images...")
 
 #예측할 사진. 여기에 라즈베리파이로 촬영한 사진을 주면 될듯
-test_img1 = cv2.imread("/home/pi/Desktop/smart_classroom/opencv-face-recognition-python-master/test-data/test1.jpg")
-test_img2 = cv2.imread("/home/pi/Desktop/smart_classroom/opencv-face-recognition-python-master/test-data/test2.jpg")
+test_img1 = cv2.imread("/home/pi/Desktop/smart_classroom/media/test/test.png")
+#test_img2 = cv2.imread("/home/pi/Desktop/smart_classroom/opencv-face-recognition-python-master/test-data/test2.jpg")
 
 #perform a prediction
 predicted_img1 = predict(test_img1)
 
-predicted_img2 = predict(test_img2)
+#predicted_img2 = predict(test_img2)
 
 print("Prediction complete")
 
 #display both images
 cv2.imshow(subjects[1], cv2.resize(predicted_img1, (400, 500)))
-cv2.imshow(subjects[2], cv2.resize(predicted_img2, (400, 500)))
+#cv2.imshow(subjects[2], cv2.resize(predicted_img2, (400, 500)))
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 cv2.waitKey(1)
