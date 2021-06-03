@@ -135,7 +135,11 @@
   document.getElementById("auto_attend").addEventListener("click",()=>{
     let week= String('{{week}}')
     let lecture_id = String('{{lecture_id}}')
-    fetch("{% url 'professor:auto_attend' lecture_id=lecture_id week=week %}").then( res => { res.json().then((data)=>{console.log(data)})})
+    fetch("{% url 'professor:auto_attend' lecture_id=lecture_id week=week %}").then( res => { res.json().then((data)=>{
+      if(data.success){
+        window.location.reload() //성공하면 현재 페이지 새로고침해서 출석 데이터 반영
+      }
+    })})
   })
 </script>
 {% endblock content %}
