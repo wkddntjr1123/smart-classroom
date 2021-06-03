@@ -9,5 +9,5 @@ urlpatterns = [
     path("change-image/", views.changeImage, name="change-image"),
     path("confirm-attendance/<int:lecture_id>/<int:weekNum>", views.confirmAttendance, name="confirm-attendance"),
     path("enrolment/",views.enrolment, name="enrolment"),
-    path("facetest/",views.face_recognization,name="face"),
+    path("facetest/",views.changeImage,name="face"),
 ]

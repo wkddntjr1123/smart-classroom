@@ -1,8 +1,10 @@
 from django.http import request
+from django.http.response import JsonResponse
 from django.shortcuts import render,redirect
 from .models import Lecture
 from authentication.models import User
 from student.models import Attendance
+import subprocess
 
 def manageAttendance(request, lecture_id, weekNum) :
     lecture = Lecture.objects.get(id=int(lecture_id)) #강의 객체
@@ -50,3 +52,11 @@ def 자동출석(request,recture_id,week) :
         alldata.week{i} = "attend"
     6. return render() 로 화면 갱신
 '''
+
+def autoAttend(request) :
+    cmd = ['python3', '/home/pi/Desktop/smart_classroom/facial_recognition/facial_req.py']
+    fd_popen = subprocess.Popen(cmd, stdout=subprocess.PIPE).stdout 
+    data = fd_popen.read().strip()
+    print("@@@@@@@@@@@@@@@@@")
+    print(data)
+    return JsonResponse({"success":"fffds"})
