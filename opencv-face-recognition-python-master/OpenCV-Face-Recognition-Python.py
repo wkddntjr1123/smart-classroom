@@ -356,12 +356,12 @@ predicted_img2 = predict(test_img2)
 print("Prediction complete")
 
 #display both images
-#cv2.imshow(subjects[1], cv2.resize(predicted_img1, (400, 500)))
-#cv2.imshow(subjects[2], cv2.resize(predicted_img2, (400, 500)))
-#cv2.waitKey(0)
-#cv2.destroyAllWindows()
-#cv2.waitKey(1)
-#cv2.destroyAllWindows()
+cv2.imshow(subjects[1], cv2.resize(predicted_img1, (400, 500)))
+cv2.imshow(subjects[2], cv2.resize(predicted_img2, (400, 500)))
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+cv2.waitKey(1)
+cv2.destroyAllWindows()
 
 
 
