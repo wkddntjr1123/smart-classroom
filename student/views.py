@@ -78,15 +78,17 @@ def face_recognization (request) :
     # specific demo. If you have trouble installing it, try any of the other demos that don't require it instead.
 
     # Get a reference to webcam #0 (the default one)
-    video_capture = cv2.VideoCapture(-1)
-    video_capture.set(3,320)
-    video_capture.set(4,240)
+    video_capture = cv2.VideoCapture(0)
+    video_capture.set(3,640)
+    video_capture.set(4,480)
     
     while True:
         ret, frame = video_capture.read()
-        cv2.imshow('video',frame)
+        frame = cv2.flip(frame, -1) 
+        cv2.imshow('frame',frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+    video_capture.release()
     cv2.destroyAllwindows()
     # Load a sample picture and learn how to recognize it.
     '''
