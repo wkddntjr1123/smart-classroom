@@ -81,10 +81,18 @@ def face_recognization (request) :
     video_capture = cv2.VideoCapture(-1)
     video_capture.set(3,320)
     video_capture.set(4,240)
+    
+    while True:
+        ret, frame = video_capture.read()
+        cv2.imshow('video',frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    cv2.destroyAllwindows()
     # Load a sample picture and learn how to recognize it.
     '''
     학습할 이미지
     '''
+'''
     obama_image = face_recognition.load_image_file("/home/pi/Desktop/smart_classroom/media/training/201515300.png")
     obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
 
@@ -97,9 +105,7 @@ def face_recognization (request) :
         obama_face_encoding,
     #    biden_face_encoding
     ]
-    '''
-    라벨링
-    '''
+    
     known_face_names = [
         "201515300",
     #    "Joe Biden"
@@ -175,5 +181,5 @@ def face_recognization (request) :
     # Release handle to the webcam
     video_capture.release()
     cv2.destroyAllWindows()
-    
+'''  
     return redirect('student:my-info')
