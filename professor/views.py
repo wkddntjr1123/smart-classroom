@@ -129,19 +129,28 @@ def autoAttend(request,lecture_id,week) :
     '''
     names = []
     alldata = Attendance.objects.filter(course=Lecture.objects.get(id=lecture_id)) # 해당 과목 Attendence를 모두 가져옴
-    weekStr = "week"+str(week) #주차 정보
+    
     #만약 Attendece정보가 존재하면
     if(len(alldata)) :
         for data in alldata : #모든 attendence를 순회하면서
-            print(data.pupil)
             
-            data.week1 = "absent"
-            #data["week"+str(week)] = "absent" #현재 주차의 출석을 모두 결석으로 처리한 후
+            if(week == 1) :  #1주차
+                data.week1 = "absent"  #현재 주차의 출석을 모두 결석으로 처리한 후
+                if data.pupil.username in names : #만약 names에 학번이 존재하면(얼굴인식됐다면)
+                    data.week1 = "attend"    #출석 처리           
+            if(week == 2) :
+                data.week2 = "absent"  
+                if data.pupil.username in names : 
+                    data.week2 = "attend" 
+            if(week == 3) :
+                data.week3 = "absent"  
+                if data.pupil.username in names : 
+                    data.week3 = "attend"
+            if(week == 4) :
+                data.week4 = "absent"  
+                if data.pupil.username in names : 
+                    data.week4 = "attend"         
 
-            if data.pupil.username in names : #만약 names에 학번이 존재하면(얼굴인식됐다면)
-            
-                data[weekStr] = "attend"    #출석 처리
-            
             data.save() #결과 db에 저장
                 
     return JsonResponse({"success": True})
