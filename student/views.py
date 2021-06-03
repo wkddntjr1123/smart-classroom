@@ -78,8 +78,9 @@ def face_recognization (request) :
     # specific demo. If you have trouble installing it, try any of the other demos that don't require it instead.
 
     # Get a reference to webcam #0 (the default one)
-    video_capture = cv2.VideoCapture(-1)
-
+    video_capture = cv2.VideoCapture(0)
+    video_capture.set(3,320)
+    video_capture.set(4,240)
     # Load a sample picture and learn how to recognize it.
     '''
     학습할 이미지
@@ -113,7 +114,7 @@ def face_recognization (request) :
     while True:
         # Grab a single frame of video
         ret, frame = video_capture.read()
-
+        
         # Resize frame of video to 1/4 size for faster face recognition processing
         small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
 
