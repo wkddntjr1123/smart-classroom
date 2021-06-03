@@ -133,7 +133,7 @@ def autoAttend(request,lecture_id,week) :
     #만약 Attendece정보가 존재하면
     if(len(alldata)) :
         for data in alldata : #모든 attendence를 순회하면서
-            
+            print(data.pupil)
             data[weekStr] = "absent" #현재 주차의 출석을 모두 결석으로 처리한 후
 
             if data.pupil.username in names : #만약 names에 학번이 존재하면(얼굴인식됐다면)
