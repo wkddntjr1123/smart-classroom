@@ -187,7 +187,7 @@ def prepare_training_data(data_folder_path):
             #build image path
             #sample image path = training-data/s1/1.pgm
             image_path = subject_dir_path + "/" + image_name
-
+            print(image_path)
             #read image
             image = cv2.imread(image_path)
             
