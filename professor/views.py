@@ -99,7 +99,6 @@ def autoAttend(request,lecture_id,week) :
                 if currentname != name:
                     currentname = name
             
-            #names에 인식된 학번이 담김
             names.append(name)
 
         for ((top, right, bottom, left), name) in zip(boxes, names):
@@ -127,7 +126,6 @@ def autoAttend(request,lecture_id,week) :
 
     print(names)
     
-    names = []
     alldata = Attendance.objects.filter(course=Lecture.objects.get(id=lecture_id)) # 해당 과목 Attendence를 모두 가져옴
     
     #만약 Attendece정보가 존재하면
