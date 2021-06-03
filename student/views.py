@@ -84,7 +84,7 @@ def face_recognization (request) :
     '''
     학습할 이미지
     '''
-    obama_image = face_recognition.load_image_file("/home/pi/Desktop/media/training/201515300.png")
+    obama_image = face_recognition.load_image_file("/home/pi/Desktop/smart_classroom/media/training/201515300.png")
     obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
 
     # Load a second sample picture and learn how to recognize it.
