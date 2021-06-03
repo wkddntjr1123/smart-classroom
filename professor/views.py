@@ -49,7 +49,7 @@ def createLecture(request):
     
     
 def autoAttend(request,lecture_id,week) :
-    
+    idArr = []
     currentname = "unknown"
     encodingsP = "/home/pi/Desktop/smart_classroom/facial_recognition/encodings.pickle"
     cascade = "/home/pi/Desktop/smart_classroom/facial_recognition/haarcascade_frontalface_default.xml"
@@ -98,7 +98,7 @@ def autoAttend(request,lecture_id,week) :
                 
                 if currentname != name:
                     currentname = name
-            
+                idArr.append(currentname)
             names.append(name)
 
         for ((top, right, bottom, left), name) in zip(boxes, names):
@@ -124,7 +124,7 @@ def autoAttend(request,lecture_id,week) :
     cv2.destroyAllWindows()
     vs.stop()
 
-    print(names)
+    print(idArr)
     
     alldata = Attendance.objects.filter(course=Lecture.objects.get(id=lecture_id)) # 해당 과목 Attendence를 모두 가져옴
     
@@ -134,19 +134,19 @@ def autoAttend(request,lecture_id,week) :
             
             if(week == 1) :  #1주차
                 data.week1 = "absent"  #현재 주차의 출석을 모두 결석으로 처리한 후
-                if data.pupil.username in names : #만약 names에 학번이 존재하면(얼굴인식됐다면)
+                if data.pupil.username in idArr : #만약 names에 학번이 존재하면(얼굴인식됐다면)
                     data.week1 = "attend"    #출석 처리           
             if(week == 2) :
                 data.week2 = "absent"  
-                if data.pupil.username in names : 
+                if data.pupil.username in idArr : 
                     data.week2 = "attend" 
             if(week == 3) :
                 data.week3 = "absent"  
-                if data.pupil.username in names : 
+                if data.pupil.username in idArr : 
                     data.week3 = "attend"
             if(week == 4) :
                 data.week4 = "absent"  
-                if data.pupil.username in names : 
+                if data.pupil.username in idArr : 
                     data.week4 = "attend"         
 
             data.save() #결과 db에 저장
