@@ -4,13 +4,6 @@ from django.shortcuts import render,redirect
 from .models import Lecture
 from authentication.models import User
 from student.models import Attendance
-from imutils.video import VideoStream
-from imutils.video import FPS
-import face_recognition
-import imutils
-import pickle
-import time
-import cv2
 
 def manageAttendance(request, lecture_id, weekNum) :
     lecture = Lecture.objects.get(id=int(lecture_id)) #강의 객체
@@ -49,6 +42,7 @@ def createLecture(request):
     
     
 def autoAttend(request,lecture_id,week) :
+    '''
     idArr = []
     currentname = "unknown"
     encodingsP = "/home/pi/Desktop/smart_classroom/facial_recognition/encodings.pickle"
@@ -150,5 +144,5 @@ def autoAttend(request,lecture_id,week) :
                     data.week4 = "attend"         
 
             data.save() #결과 db에 저장
-                
+    '''
     return JsonResponse({"success": True})
